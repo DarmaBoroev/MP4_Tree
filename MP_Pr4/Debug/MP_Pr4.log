@@ -1,0 +1,22 @@
+﻿Сборка начата 08.04.2017 1:19:50.
+     1>Проект "C:\Users\Дарма\Documents\Visual Studio 2013\Projects\МП\MP_Pr4\MP_Pr4\MP_Pr4.vcxproj" в узле 2 (целевые объекты Build).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Individ_Var2.cpp
+         Individ_Var2.cpp
+     1>c:\users\дарма\documents\visual studio 2013\projects\мп\mp_pr4\mp_pr4\mytree.h(73): error C2244: MyProg::MyTree<T>::CountElem: не удается сопоставить определение функции существующему объявлению
+                 определение
+                 'void MyProg::MyTree<T>::CountElem(MyProg::MyTree<T>::Node *&,T &)'
+                 существующие объявления
+                 'void MyProg::MyTree<T>::CountElem(MyProg::MyTree<T>::Node *&,const T &)'
+                 'void MyProg::MyTree<T>::CountElem(const T &)'
+     1>c:\users\дарма\documents\visual studio 2013\projects\мп\mp_pr4\mp_pr4\mytree.h(84): error C2244: MyProg::MyTree<T>::Delete: не удается сопоставить определение функции существующему объявлению
+                 c:\users\дарма\documents\visual studio 2013\projects\мп\mp_pr4\mp_pr4\mytree.h(50): см. объявление "MyProg::MyTree<T>::Delete"
+                 определение
+                 'void MyProg::MyTree<T>::Delete(MyProg::MyTree<T>::Node *&)'
+                 существующие объявления
+                 'void MyProg::MyTree<T>::Delete(MyProg::MyTree<T>::Node *)'
+     1>Сборка проекта "C:\Users\Дарма\Documents\Visual Studio 2013\Projects\МП\MP_Pr4\MP_Pr4\MP_Pr4.vcxproj" завершена (целевые объекты Build) с ошибкой.
+
+Ошибка сборки.
+
+Затраченное время: 00:00:03.38
