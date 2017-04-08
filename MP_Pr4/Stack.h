@@ -1,4 +1,8 @@
 #pragma once
+#include <string>
+#include <iostream>
+
+using namespace std;
 
 namespace MyStack
 {
@@ -47,17 +51,19 @@ namespace MyStack
 			}
 		}
 
-		void pop()
+		T pop()
 		{
 			if (tail == 0)
 			{
-				throw string("Стек пуст!");
+				return NULL;
 			}
-			T tmp = tail->val;
-			Node* delptr = tail;
-			tail = tail->next;
-			delete delptr;
-			return tmp;
+			else
+			{
+				Node* delptr = tail;
+				tail = tail->next;
+				return delptr->val;
+				delete delptr;
+			}
 		}
 
 		void print()

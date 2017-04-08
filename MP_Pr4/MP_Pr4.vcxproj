@@ -65,8 +65,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Individ_Var2.cpp" />
-    <ClCompile Include="MyTree.cpp" />
-    <ClCompile Include="Stack.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyTree.h" />

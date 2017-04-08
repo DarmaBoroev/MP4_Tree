@@ -6,12 +6,11 @@ using MyStack::Stack;
 
 namespace MyProg
 {
-	template <class T>
 	class MyTree
 	{
 		struct Node
 		{
-			T val;
+			int val;
 			Node *son;
 			Node *brother;
 			Node() : son(0), brother(0)
@@ -19,7 +18,7 @@ namespace MyProg
 			};
 		};
 		Node *root;
-	
+
 	public:
 		MyTree()
 		{
@@ -30,7 +29,7 @@ namespace MyProg
 			Delete(root);
 		}
 
-		void Add(const T &elem)
+		void Add(const int &elem)
 		{
 			Add(root, elem);
 		}
@@ -40,76 +39,72 @@ namespace MyProg
 			Show(root);
 		}
 
-		void CountElem(const T &x)
+		void CountElem(const int &x)
 		{
 			CountElem(root, x);
 		}
 
 	private:
-		void Add(Node *&node, const T &elem);
-		void Delete(Node *node);
-		void Show(Node *&node);
-		void CountElem(Node *&node,const T &x);
+		void Add(Node *&node, const int &x)
+		{
+			if (node == NULL)
+			{
+				node = new Node;
+				node->val = x;
+			}
+			else if (x < node->val)
+			{
+				Add(node->son, x);
+			}
+			else
+			{
+				Add(node->brother, x);
+			}
+		}
+
+		void Delete(Node *node)
+		{
+			if (node)
+			{
+				Delete(node->son);
+				Delete(node->brother);
+				delete node;
+			}
+		}
+
+		void Show(Node *&node)
+		{
+			if (node != NULL)
+			{
+				cout << node->val;
+				Show(node->brother);
+				Show(node->son);
+
+			}
+		}
+
+		void CountElem(Node *&node, const int &x)
+		{
+			Stack <Node*> St;
+			int N = 0;
+			if (node == NULL)
+			{
+				throw string("Пустое дерево!");
+			};
+
+			do
+			{
+				if (x == node->val) N++;
+				if (node->son != NULL)
+				{
+					St.push(node->son);
+				}
+				if (node->brother != NULL)
+				{
+					St.push(node->brother);
+				}
+			} while (node = St.pop());
+			cout << "Число вхождений элемента Е в дерево Т = " << N;
+		}
 	};
-
-	template <class T>
-	void MyTree<T>::CountElem(Node *&node, T &x)
-	{
-		Stack St;
-		int count = 0;
-		if (node == NULL);
-		do
-		{
-			if (node->val == x) count++;
-			if (node->son != NULL)
-			{
-				St.push(node->son)
-			}
-			if (node->brother != NULL)
-			{
-				St.push(node->brother);
-			}
-		} while (St.pop());
-	}
-
-	template <class T>
-	void MyTree<T>::Delete(Node *&node)
-	{
-		if (node)
-		{
-			Delete(node->son);
-			Delete(node->brother);
-			delete node;
-		}
-	}
-
-	template <class T>
-	void MyTree <T>::Add(Node *&node, const T &x)
-	{
-		if (node == NULL)
-		{
-			node = new Node;
-			node->val = x;
-		}
-		else if (x < node->val)
-		{
-			Add(node->son, x);
-		}
-		else
-		{
-			Add(node->brother, x);
-		}
-	}
-
-	template <class T>
-	void MyTree <T>::Show(Node *&node)
-	{
-		if (node != NULL)
-		{
-			cout << node->val;
-			Show(node->brother);
-			Show(node->son);
-			
-		}
-	}
 }
