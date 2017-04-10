@@ -26,22 +26,25 @@ namespace MyProg
 
 		~MyTree()
 		{
-			Delete(root);
+			/*Delete(root);*/
 		}
 
 		void Add()
 		{
 			T x;
-			cout << "\tВведите значение: ";
-			cin >> x;
-			Add(root, x);
+			cout << "\tВведите значение элемента: ";
+			if (!(cin >> x))
+			{
+				throw string("Некорректный ввод данных!\n");
+			}
+			else Add(root, x);
 		}
 
 		void Show()
 		{
 			if (root == NULL)
 			{
-				cout << "\tПустое дерево! Добавьте элементы в дерево!";
+				cout << "Дерево пустое! Добавьте элементы в дерево!";
 			}
 			else
 			{
@@ -52,21 +55,36 @@ namespace MyProg
 
 		void CountElem()
 		{
-			T E;
+			T E =0;
+			Node* root1 = root;
 			if (root == NULL)
 			{
-				cout << "\tПустое дерево! Добавьте элементы в дерево!\n";
+				cout << "Дерево пустое! Добавьте элементы в дерево!\n";
 			}
 			else
 			{
 				cout << "\tВведите элемент Е: ";
-				cin >> E;
-				CountElem(root, E);
+				if (!(cin >> E))
+				{
+					throw string("Некорректный ввод данных!\n");
+				}
+				else
+				{
+					CountElem(root, E);
+					root = root1;
+				}
 			}
 		}
 
+		void Delete()
+		{
+			Delete(root);
+			cout << "Дерево удалено!\n";
+			root = NULL;
+		}
+
 	private:
-		void Add(Node *&node, const int &x)
+		void Add(Node *&node, const T &x)
 		{
 			if (node == NULL)
 			{
@@ -103,7 +121,7 @@ namespace MyProg
 			}
 		}
 
-		void CountElem(Node *&node, const int &x)
+		void CountElem(Node *&node, const T &x)
 		{
 			Stack <Node*> St;
 			int N = 0;
@@ -119,7 +137,7 @@ namespace MyProg
 					St.push(node->brother);
 				}
 			} while (node = St.pop());
-			if (N == 0) cout << "\tТакого элемента в дереве нет!\n";
+			if (N == 0) cout << "Такого элемента в дереве нет!\n";
 			else cout << "\tЧисло вхождений элемента Е в дерево Т = " << N <<endl;
 		}
 	};
