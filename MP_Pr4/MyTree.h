@@ -6,16 +6,15 @@ using MyStack::Stack;
 
 namespace MyProg
 {
+	template <class T>
 	class MyTree
 	{
 		struct Node
 		{
-			int val;
+			T val;
 			Node *son;
 			Node *brother;
-			Node() : son(0), brother(0)
-			{
-			};
+			Node() : son(0), brother(0) {};
 		};
 		Node *root;
 
@@ -24,24 +23,46 @@ namespace MyProg
 		{
 			root = NULL;
 		};
+
 		~MyTree()
 		{
 			Delete(root);
 		}
 
-		void Add(const int &elem)
+		void Add()
 		{
-			Add(root, elem);
+			T x;
+			cout << "\tВведите значение: ";
+			cin >> x;
+			Add(root, x);
 		}
 
 		void Show()
 		{
-			Show(root);
+			if (root == NULL)
+			{
+				cout << "\tПустое дерево! Добавьте элементы в дерево!";
+			}
+			else
+			{
+				cout << "\tЭлементы дерева: ";
+				Show(root);
+			}
 		}
 
-		void CountElem(const int &x)
+		void CountElem()
 		{
-			CountElem(root, x);
+			T E;
+			if (root == NULL)
+			{
+				cout << "\tПустое дерево! Добавьте элементы в дерево!\n";
+			}
+			else
+			{
+				cout << "\tВведите элемент Е: ";
+				cin >> E;
+				CountElem(root, E);
+			}
 		}
 
 	private:
@@ -76,10 +97,9 @@ namespace MyProg
 		{
 			if (node != NULL)
 			{
-				cout << node->val;
+				cout << node->val << " ";
 				Show(node->brother);
 				Show(node->son);
-
 			}
 		}
 
@@ -87,11 +107,6 @@ namespace MyProg
 		{
 			Stack <Node*> St;
 			int N = 0;
-			if (node == NULL)
-			{
-				throw string("Пустое дерево!");
-			};
-
 			do
 			{
 				if (x == node->val) N++;
@@ -104,7 +119,8 @@ namespace MyProg
 					St.push(node->brother);
 				}
 			} while (node = St.pop());
-			cout << "Число вхождений элемента Е в дерево Т = " << N;
+			if (N == 0) cout << "\tТакого элемента в дереве нет!\n";
+			else cout << "\tЧисло вхождений элемента Е в дерево Т = " << N <<endl;
 		}
 	};
 }
