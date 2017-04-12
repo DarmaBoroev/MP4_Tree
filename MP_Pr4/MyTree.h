@@ -12,9 +12,9 @@ namespace MyProg
 		struct Node
 		{
 			T val;
-			Node *son;
-			Node *brother;
-			Node() : son(0), brother(0) {};
+			Node *child;
+			Node *br;
+			Node() : child(NULL), br(NULL) {};
 		};
 		Node *root;
 
@@ -91,13 +91,16 @@ namespace MyProg
 				node = new Node;
 				node->val = x;
 			}
-			else if (x < node->val)
-			{
-				Add(node->son, x);
-			}
 			else
 			{
-				Add(node->brother, x);
+				if (x < node->val)
+				{
+					Add(node->child, x);
+				}
+				else
+				{
+					Add(node->br, x);
+				}
 			}
 		}
 
@@ -105,8 +108,8 @@ namespace MyProg
 		{
 			if (node)
 			{
-				Delete(node->son);
-				Delete(node->brother);
+				Delete(node->child);
+				Delete(node->br);
 				delete node;
 			}
 		}
@@ -116,8 +119,8 @@ namespace MyProg
 			if (node != NULL)
 			{
 				cout << node->val << " ";
-				Show(node->brother);
-				Show(node->son);
+				Show(node->br);
+				Show(node->child);
 			}
 		}
 
@@ -128,13 +131,13 @@ namespace MyProg
 			do
 			{
 				if (x == node->val) N++;
-				if (node->son != NULL)
+				if (node->child != NULL)
 				{
-					St.push(node->son);
+					St.push(node->child);
 				}
-				if (node->brother != NULL)
+				if (node->br != NULL)
 				{
-					St.push(node->brother);
+					St.push(node->br);
 				}
 			} while (node = St.pop());
 			if (N == 0) cout << "Такого элемента в дереве нет!\n";

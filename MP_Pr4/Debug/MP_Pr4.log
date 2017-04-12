@@ -1,4 +1,4 @@
-﻿Сборка начата 11.04.2017 2:18:24.
+﻿Сборка начата 12.04.2017 15:38:47.
      1>Проект "C:\Users\Дарма\Documents\Visual Studio 2013\Projects\МП\MP_Pr4\MP_Pr4\MP_Pr4.vcxproj" в узле 2 (целевые объекты Build).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Individ_Var2.cpp
@@ -10,4 +10,4 @@
 
 Сборка успешно завершена.
 
-Затраченное время: 00:00:00.97
+Затраченное время: 00:00:01.06
